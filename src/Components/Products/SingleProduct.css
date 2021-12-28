@@ -1,0 +1,12 @@
+/** @format */
+.product_container {
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.product_img {
+  margin: 10px;
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+}

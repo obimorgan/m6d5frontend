@@ -1,13 +1,13 @@
-import { Image, Col } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import './SingleProduct.css'
 
-const SingleProduct = ({ image }) => {
+const SingleProduct = ({ image, price, name }) => {
     return (
         <>
-            <div className="product_container" >
-                <Col xs={6} md={3}>
-                    <Image className="product_img" src={image} rounded />
-                </Col>
+            <div xs={6} md={3} className="product_container" >
+                <Image className="product_img" src={image} rounded />
+                <h5>{name}</h5>
+                <p>Kr- {price}</p>
             </div>
 
         </>

@@ -3,10 +3,23 @@
   margin: 10px;
   border: 1px solid black;
   border-radius: 5px;
+  flex-direction: column;
+}
+.product_container > h5 {
+  font-family: sans-serif;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.product_container > p {
+  font-family: sans-serif;
+  font-weight: 600;
+  margin-top: 0px;
+  margin-left: 10px;
 }
 .product_img {
   margin: 10px;
   object-fit: cover;
-  width: 300px;
+  width: 330px;
   height: 300px;
 }

@@ -1,0 +1,11 @@
+/** @format */
+
+Nav {
+}
+.search_bar {
+  font-size: 16px;
+  font-weight: 400;
+}
+.search_bar input {
+  width: 450px;
+}

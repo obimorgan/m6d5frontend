@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
-import SingleProduct from "./Products/SingleProduct";
+import Product from "./Products/Product";
 import { Row } from "react-bootstrap";
 
 const Home = () => {
-    const [products, setProducts] = useState([])
-
-    useEffect(() => {
-        getProducts()
-    }, [])
+    const [products, setProducts] = useState(null)
 
     const getProducts = async () => {
         try {
@@ -20,10 +16,15 @@ const Home = () => {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        getProducts()
+    }, [])
+
     return (
         <Row>
             {products?.map((product) =>
-                <SingleProduct key={product.id} id={product.id} image={product.image_url} name={product.product_name} price={product.price} />)
+                <Product key={product.id} id={product.id} image={product.image_url} name={product.product_name} price={product.price} />)
             }
         </Row>
     )

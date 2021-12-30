@@ -31,3 +31,10 @@
   margin-bottom: 5px;
   margin-left: 10px;
 }
+.single_img {
+  width: 600px;
+  height: 500px;
+  object-fit: cover;
+}
+.product_details_text {
+}

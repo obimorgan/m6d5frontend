@@ -2,11 +2,11 @@ import { Image } from 'react-bootstrap'
 import './Product.css'
 import { useNavigate } from 'react-router'
 
-const Product = ({ image, price, name, id }) => {
+const Product = ({ image, price, name, productId }) => {
 
     const navigate = useNavigate()
     const handleNavigate = () => {
-        navigate(`/${id}`)
+        navigate(`/${productId}`)
     }
 
     return (

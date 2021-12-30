@@ -24,7 +24,7 @@ const Home = () => {
     return (
         <Row>
             {products?.map((product) =>
-                <Product key={product.id} id={product.id} image={product.image_url} name={product.product_name} price={product.price} />)
+                <Product key={product.id} productId={product.id} image={product.image_url} name={product.product_name} price={product.price} />)
             }
         </Row>
     )

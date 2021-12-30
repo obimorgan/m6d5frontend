@@ -1,11 +1,12 @@
 import { Container, Row, Col, Image } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router"
+import { useParams } from "react-router-dom"
 import { BsCartPlusFill } from "react-icons/bs"
 
 const Productdetails = () => {
 
-    const { productId } = useParams()
+    let { productId } = useParams()
+    console.log("this.context:", productId)
     const [productDetails, setProductDetails] = useState({})
 
     const fetchProductDetails = async () => {

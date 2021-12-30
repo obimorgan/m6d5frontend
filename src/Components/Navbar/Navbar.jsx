@@ -1,30 +1,30 @@
 import { Container, Nav } from "react-bootstrap";
 import "./Navbar.css"
+import { BsFillCartFill } from "react-icons/bs"
+import Searchbar from "./Searchbar";
+
 
 const NavBar = () => {
     return (
         <Container fluid>
-            <div className="d-flex align-items-center" >
+            <div className="nav d-flex align-items-center justify-content-between" >
                 <Nav
                     activeKey="/home"
                 // onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
                 >
-                    <Nav.Item>
-                        <Nav.Link href="/home">Home</Nav.Link>
+                    <Nav.Item  >
+                        <div className="" href="/home">Home</div>
                     </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="link-1">Cart</Nav.Link>
+                    <Nav.Item  >
+                        <div className="mx-5" eventKey="link-1"><BsFillCartFill /></div>
                     </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="disabled" disabled>
-                            Disabled
-                        </Nav.Link>
-                    </Nav.Item>
+                    <div className="search_bar " >
+                        <Searchbar />
+                    </div>
                 </Nav>
-                <div className="search_bar" >
-                    <input type="text" placeholder="Search product..." />
-                </div>
+
             </div>
+
         </ Container>
     )
 }

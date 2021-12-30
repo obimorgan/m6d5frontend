@@ -1,11 +1,10 @@
 /** @format */
 
-Nav {
+.nav {
+  margin: 50px;
+  color: #2f3a8f;
 }
 .search_bar {
-  font-size: 16px;
-  font-weight: 400;
-}
-.search_bar input {
   width: 450px;
+  background-color: #feece9;
 }

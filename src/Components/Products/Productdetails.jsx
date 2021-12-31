@@ -2,6 +2,7 @@ import { Container, Row, Col, Image } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { BsCartPlusFill } from "react-icons/bs"
+import { IconContext } from "react-icons/lib"
 
 const Productdetails = () => {
 
@@ -27,19 +28,24 @@ const Productdetails = () => {
 
     return (
         <Container>
-            <Row>
+            <div className="d-flex">
                 <Col m={8}>
                     <Image className="single_img" src={productDetails.image_url} />
                 </Col>
-                <Col m={4}>
-                    <div className="product_details_text flex-column" >
-                        <h5>{productDetails.product_name}</h5>
-                        <p>{productDetails.description}</p>
-                        <p>kr. {productDetails.price}</p>
-                        <p><BsCartPlusFill /></p>
+                <Col m={4} className="details_container">
+                    <div className="product_details_text flex-column justify-content-between" >
+                        <h1 >{productDetails.product_name}</h1>
+                        <h4>{productDetails.price} Kr</h4>
+                        <div>
+                            <h5>Description</h5>
+                            <p>{productDetails.description}</p>
+                        </div>
+                        <IconContext.Provider value={{ size: "25px" }}>
+                            <button className="add_cart_btn" ><BsCartPlusFill /></button>
+                        </IconContext.Provider>
                     </div>
                 </Col>
-            </Row>
+            </div>
 
         </Container>
     )

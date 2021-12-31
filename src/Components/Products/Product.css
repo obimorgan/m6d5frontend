@@ -31,10 +31,29 @@
   margin-bottom: 5px;
   margin-left: 10px;
 }
+.details_container {
+  background-color: #ccd1e4;
+}
 .single_img {
   width: 600px;
   height: 500px;
   object-fit: cover;
 }
-.product_details_text {
+.add_cart_btn {
+  color: #fa9e92;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  background: #1f76a5;
+  border: 1px #fad9d4 solid;
+}
+.product_details_text > h1 {
+  color: #ff725f;
+  margin: 50px 0 10px;
+}
+.product_details_text > p {
+  font-size: 16px;
+}
+.product_details_text > div {
+  margin: 40px 0;
 }

@@ -1,0 +1,8 @@
+/** @format */
+
+.product_img {
+  margin: 0px;
+  object-fit: cover;
+  width: 130px;
+  height: 100px;
+}

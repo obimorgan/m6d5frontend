@@ -10,12 +10,11 @@ const NavBar = () => {
         <Container>
             <div className="nav d-flex align-content-center" >
                 <Link to="/" className="nav-link" href="/home">Home</Link>
-                <Link to="/cart" className="nav-link"><BsFillCartFill /></Link>
+                <Link to="/cart/userId" className="nav-link"><BsFillCartFill /></Link>
                 <div className="search_bar " >
                     <Searchbar />
                 </div>
             </div>
-
         </ Container>
     )
 }

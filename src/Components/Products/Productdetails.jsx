@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { BsCartPlusFill } from "react-icons/bs"
 import { IconContext } from "react-icons/lib"
+import Navbar from "../Navbar/Navbar"
 
 const Productdetails = () => {
 
@@ -28,6 +29,7 @@ const Productdetails = () => {
 
     return (
         <Container>
+            <Navbar />
             <div className="d-flex">
                 <Col m={8}>
                     <Image className="single_img" src={productDetails.image_url} />
@@ -41,7 +43,9 @@ const Productdetails = () => {
                             <p>{productDetails.description}</p>
                         </div>
                         <IconContext.Provider value={{ size: "25px" }}>
-                            <button className="add_cart_btn" ><BsCartPlusFill /></button>
+                            <button className="add_cart_btn"
+
+                            ><BsCartPlusFill /></button>
                         </IconContext.Provider>
                     </div>
                 </Col>

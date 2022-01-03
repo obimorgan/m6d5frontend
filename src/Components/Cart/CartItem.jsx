@@ -1,7 +1,8 @@
-import { Container, Image } from "react-bootstrap"
 import "./Cart.css"
+import { Container, Image } from "react-bootstrap"
 
-const Cart = ({ }) => {
+
+const CartItem = ({ }) => {
     return (
         <Container>
             <div className="card_container d-flex" >
@@ -20,4 +21,4 @@ const Cart = ({ }) => {
     )
 }
 
-export default Cart
+export default CartItem

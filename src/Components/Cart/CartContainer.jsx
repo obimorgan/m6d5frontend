@@ -3,12 +3,18 @@ import { Row, Col, Table } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import Navbar from "../Navbar/Navbar"
+import { BsFillDashCircleFill, BsPlusCircleFill } from "react-icons/bs";
 
 const CartContainer = () => {
 
     const [cartItems, setCartItems] = useState(null)
-    const [totalSumPrice, setTotalsumPrice] = useState({})
+    const [totalSumPrice, setTotalsumPrice] = useState(0)
 
+    // const summPrice = () => {
+    //     if (item.unitTotalPrice) {
+    //         let prices
+    //     }
+    // }
     const fetchCartItems = async () => {
         try {
             const response = await fetch("https://hw-m6d5.herokuapp.com/shoppingcart/16abcacb-d1ea-40d5-8a63-941a3a4a9fc4")
@@ -48,7 +54,7 @@ const CartContainer = () => {
                 <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>quantity</th>
+                    <th>Quantity</th>
                     <th>Total</th>
                 </tr>
                 {
@@ -57,7 +63,7 @@ const CartContainer = () => {
                             <tr key={item.productid}>
                                 <td className="col-md-6">
                                     <div className="column-flex"  >
-                                        <img className="product_img"
+                                        <img className="cart_img"
                                             src={item.product.image_url} alt={item.product_name} />
                                         <div>{item.product.product_name}</div>
                                         <div>{item.product.description}</div>
@@ -68,9 +74,10 @@ const CartContainer = () => {
                                 </td>
                                 <td className="col-md-2">
                                     <div className="d-flex" >
-                                        <button>+</button>
-                                        <div>{item.unitQuantity}</div>
-                                        <button>-</button>
+                                        <div className="unit_btn mx-2" ><BsPlusCircleFill /></div>
+                                        <div
+                                        >{item.unitQuantity}</div>
+                                        <div className="unit_btn mx-2" ><BsFillDashCircleFill /></div>
                                     </div>
                                 </td>
                                 <td className="col-md-2">
@@ -82,52 +89,14 @@ const CartContainer = () => {
                         )
                     })
                 }
+                <footer>
+                    <div>
+                        Cart Total : {totalSumPrice}
+                    </div>
+                </footer>
 
             </Table>
-            {/* {
-                cartItems?.map((item) => {
-                    return (
-                        <section>
-                            <div key={item.productId} className="product_headers d-flex" >
-                                <Col className="flex-colum" md={3}>
-                                    <div>Product</div>
-                                    <img className="product_img" src={item.product.image_url} />
-                                    <div className="card_body flex-column">
-                                        <h5>{item.product.product_name}</h5>
-                                        <p> {item.product.description}</p>
-                                    </div>
-                                </Col>
-                                <Col className="flex-colum" md={3}>
-                                    <div>Price</div>
-                                    <div className="card_body flex-column">
-                                        <h5>{item.product.price}</h5>
-                                    </div>
-                                </Col>
-                                <Col className="flex-colum" md={3}>
-                                    <div>Quantity</div>
-                                    <div className="d-flex" >
-                                        <button>+</button>
-                                        <div>{item.unitQuantity}</div>
-                                        <button>-</button>
-                                    </div>
-                                </Col>
-                                <Col className="flex-colum" md={3}>
-                                    <div>Total</div>
-                                    <div>{item.unitTotalPrice}</div>
-                                </Col>
-                            </div>
-                        </section>
 
-                    )
-                })
-            } */}
-            <footer>
-                <Row>
-                    <div>
-                        Cart Total :
-                    </div>
-                </Row>
-            </footer>
         </>
     )
 }

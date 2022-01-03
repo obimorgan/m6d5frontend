@@ -1,4 +1,4 @@
-import { Container, Row, Col, Image } from "react-bootstrap"
+import { Container, Col, Image } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { BsCartPlusFill } from "react-icons/bs"
@@ -22,11 +22,26 @@ const Productdetails = () => {
             console.log(error)
         }
     }
-
     useEffect(() => {
         fetchProductDetails()
     }, [])
 
+    const handleAddToCart = async () => {
+        try {
+            const response = await fetch(`https://hw-m6d5.herokuapp.com/shoppingcart/${productId}/16abcacb-d1ea-40d5-8a63-941a3a4a9fc4`, {
+                method: "POST",
+                body: JSON.stringify(),
+                header: { "Content-type": "application/json" }
+            })
+            if (response.ok) {
+                const data = await response.json()
+                console.log(data)
+                alert("You added this product to cart")
+            } else throw new Error("Post failed")
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <Container>
             <Navbar />
@@ -43,9 +58,10 @@ const Productdetails = () => {
                             <p>{productDetails.description}</p>
                         </div>
                         <IconContext.Provider value={{ size: "25px" }}>
-                            <button className="add_cart_btn"
-
-                            ><BsCartPlusFill /></button>
+                            <button className="add_cart_btn" type="button"
+                                onClick={() => handleAddToCart()}
+                            ><BsCartPlusFill />
+                            </button>
                         </IconContext.Provider>
                     </div>
                 </Col>

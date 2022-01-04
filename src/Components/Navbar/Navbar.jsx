@@ -9,9 +9,7 @@ import { DataContext } from "../DataContext"
 
 
 const NavBar = () => {
-    const products = useContext(DataContext)
-    // const { value2 } = useContext(DataContext)
-    // const [cartItems, setCartItems] = value2
+    const [cartItems, setCartItems] = useContext(DataContext)
 
     return (
         < Container >
@@ -19,7 +17,7 @@ const NavBar = () => {
                 <Link to="/" className="nav-link" href="/home">Home</Link>
                 <Link to="/cart/userId" className="nav-link"><BsFillCartFill />
                     {/* <span>{cartItems.length}</span> */}
-                    <span>{products.length}</span>
+                    <span>{cartItems.length}</span>
                 </Link>
                 <div className="search_bar " >
                     <Searchbar />

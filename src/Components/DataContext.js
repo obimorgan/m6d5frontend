@@ -43,15 +43,7 @@ const DataProvider = ({ children }) => {
     getCartItems();
   }, []);
   return (
-    // <DataContext.Provider
-    //   value={{
-    //     value1: [products, setProducts],
-    //     value2: [cartItems, setCartItems]
-    //   }}
-    // >
-    //   {children}
-    //   </DataContext.Provider>
-    <DataContext.Provider value={[products, setProducts]}>
+    <DataContext.Provider value={[cartItems, setCartItems]}>
       {children}
     </DataContext.Provider>
   );

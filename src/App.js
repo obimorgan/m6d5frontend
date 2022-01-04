@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./Components/Home";
+import Navbar from "./Components/Navbar/Navbar";
 import Productdetails from "./Components/Products/Productdetails";
 import CartContainer from "./Components/Cart/CartContainer";
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Container>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:productId" element={<Productdetails />} />

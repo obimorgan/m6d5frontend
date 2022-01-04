@@ -1,21 +1,13 @@
 import "./Cart.css"
-import { Row, Col, Table } from "react-bootstrap"
+import { Table } from "react-bootstrap"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import Navbar from "../Navbar/Navbar"
 import { BsFillDashCircleFill, BsPlusCircleFill } from "react-icons/bs";
 
 const CartContainer = () => {
 
     const [cartItems, setCartItems] = useState(null)
-    const [totalSumPrice, setTotalsumPrice] = useState(0)
 
-    // const summPrice = () => {
-    //     if (item.unitTotalPrice) {
-    //         let prices
-    //     }
-    // }
-    const fetchCartItems = async () => {
+    const fetchCartItems2 = async () => {
         try {
             const response = await fetch("https://hw-m6d5.herokuapp.com/shoppingcart/16abcacb-d1ea-40d5-8a63-941a3a4a9fc4")
             if (response.ok) {
@@ -27,27 +19,13 @@ const CartContainer = () => {
             console.log(error)
         }
     }
-    // const fetchCartUnit = async () => {
-    //     try {
-    //         const response = await fetch("https://hw-m6d5.herokuapp.com/shoppingcart/16abcacb-d1ea-40d5-8a63-941a3a4a9fc4")
-    //         if (response.ok) {
-    //             const data = await response.json()
-    //             setTotalsumPrice(data)
-    //             console.log(data)
-    //         }
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     useEffect(() => {
-        fetchCartItems()
-        // fetchCartUnit()
+        fetchCartItems2()
     }, [])
 
     return (
         <>
-            <Navbar />
             <h1>Cart</h1>
 
             <Table>
@@ -77,7 +55,9 @@ const CartContainer = () => {
                                         <div className="unit_btn mx-2" ><BsPlusCircleFill /></div>
                                         <div
                                         >{item.unitQuantity}</div>
-                                        <div className="unit_btn mx-2" ><BsFillDashCircleFill /></div>
+                                        <div className="unit_btn mx-2"
+
+                                        ><BsFillDashCircleFill /></div>
                                     </div>
                                 </td>
                                 <td className="col-md-2">
@@ -91,7 +71,7 @@ const CartContainer = () => {
                 }
                 <footer>
                     <div>
-                        Cart Total : {totalSumPrice}
+                        Cart Total :
                     </div>
                 </footer>
 

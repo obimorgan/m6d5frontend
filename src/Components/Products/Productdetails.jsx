@@ -3,12 +3,11 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { BsCartPlusFill } from "react-icons/bs"
 import { IconContext } from "react-icons/lib"
-import Navbar from "../Navbar/Navbar"
 
 const Productdetails = () => {
 
     let { productId } = useParams()
-    console.log("this.context:", productId)
+    console.log("this context:", productId)
     const [productDetails, setProductDetails] = useState({})
 
     const fetchProductDetails = async () => {
@@ -44,7 +43,6 @@ const Productdetails = () => {
     }
     return (
         <Container>
-            <Navbar />
             <div className="d-flex">
                 <Col m={8}>
                     <Image className="single_img" src={productDetails.image_url} />
@@ -66,7 +64,6 @@ const Productdetails = () => {
                     </div>
                 </Col>
             </div>
-
         </Container>
     )
 }

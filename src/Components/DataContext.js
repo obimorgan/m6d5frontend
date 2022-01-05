@@ -1,22 +1,28 @@
 /** @format */
 
-import React, { useState, createContext, useEffect } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
+import Reducer from "./Reducer";
 
 const url = "https://hw-m6d5.herokuapp.com/products";
-export const DataContext = createContext();
+const DataContext = React.createContext();
+
+const inititialState = {
+  products: [],
+  cartItems: [],
+  total: 0,
+  amount: 0,
+};
 
 const DataProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  const [state, dispatch] = useReducer(Reducer, inititialState);
 
   const getProducts = async () => {
     try {
       const response = await fetch(url);
       if (response.ok) {
-        const data = await response.json();
-        setProducts(data);
+        const products = await response.json();
+        dispatch({ type: "DISPLAY_PRODUCTS", payload: products });
       }
-      throw new Error("Failed getting products!");
     } catch (error) {
       console.log(error);
     }
@@ -29,10 +35,9 @@ const DataProvider = ({ children }) => {
       );
       if (response.ok) {
         const data = await response.json();
-        setCartItems(data.cartItem);
-        console.log("cart items", data);
+        const cartItems = data.cartItem;
+        dispatch({ type: "DISPLAY_CARTITEMS", payload: cartItems });
       }
-      throw new Error("Failed getting cart items");
     } catch (error) {
       console.log(error);
     }
@@ -43,10 +48,16 @@ const DataProvider = ({ children }) => {
     getCartItems();
   }, []);
   return (
-    <DataContext.Provider value={[cartItems, setCartItems]}>
+    <DataContext.Provider
+      value={{
+        ...state,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
 };
-
-export { DataProvider };
+export const useGlobalContext = () => {
+  return useContext(DataContext);
+};
+export { DataContext, DataProvider };

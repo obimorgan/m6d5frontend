@@ -6,10 +6,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../DataContext"
 
-
-
 const NavBar = () => {
-    const [cartItems, setCartItems] = useContext(DataContext)
 
     return (
         < Container >
@@ -17,7 +14,7 @@ const NavBar = () => {
                 <Link to="/" className="nav-link" href="/home">Home</Link>
                 <Link to="/cart/userId" className="nav-link"><BsFillCartFill />
                     {/* <span>{cartItems.length}</span> */}
-                    <span>{cartItems.length}</span>
+                    <span></span>
                 </Link>
                 <div className="search_bar " >
                     <Searchbar />

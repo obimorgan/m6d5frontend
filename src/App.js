@@ -5,7 +5,7 @@ import "./App.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./Components/Home";
+import ProductContainer from "./Components/Products/ProductContainer";
 import Navbar from "./Components/Navbar/Navbar";
 import Productdetails from "./Components/Products/Productdetails";
 import CartContainer from "./Components/Cart/CartContainer";
@@ -16,7 +16,7 @@ function App() {
       <Container>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ProductContainer />} />
           <Route path="/:productId" element={<Productdetails />} />
           <Route path="/cart/:id" element={<CartContainer />} />
         </Routes>

@@ -8,11 +8,12 @@ import reportWebVitals from "./reportWebVitals";
 import { DataProvider } from "./Components/DataContext";
 
 ReactDOM.render(
-  <DataProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <DataProvider>
       <App />
-    </React.StrictMode>
-  </DataProvider>,
+    </DataProvider>
+  </React.StrictMode>,
+
   document.getElementById("root")
 );
 

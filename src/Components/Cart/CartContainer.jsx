@@ -4,7 +4,7 @@ import { useGlobalContext } from "../DataContext";
 import CartItem from "./CartItem";
 
 const CartContainer = () => {
-    const { cartItems } = useGlobalContext()
+    const { cartItems, clearCart } = useGlobalContext()
     console.log("Hello", cartItems)
     return (
         <Container>
@@ -21,12 +21,12 @@ const CartContainer = () => {
                         return <CartItem key={item.productId} {...item} />
                     })
                 }
-                <footer>
-                    <div>
-                        Cart Total :
-                    </div>
-                </footer>
             </Table>
+            <footer>
+                <button
+                    onClick={clearCart}
+                    type="button">Clear cart</button>
+            </footer>
         </Container>
     )
 }

@@ -43,6 +43,10 @@ const DataProvider = ({ children }) => {
     }
   };
 
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
+
   useEffect(() => {
     getProducts();
     getCartItems();
@@ -51,6 +55,7 @@ const DataProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         ...state,
+        clearCart,
       }}
     >
       {children}

@@ -1,9 +1,10 @@
 import "./Cart.css"
 import { BsFillDashCircleFill, BsPlusCircleFill } from "react-icons/bs";
-
+import { useGlobalContext } from "../DataContext";
 
 
 const CartItem = ({ product, unitQuantity, unitTotalPrice }) => {
+    // const { clearCart } = useGlobalContext()
     return (
         <>
             <tr>

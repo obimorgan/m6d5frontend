@@ -46,6 +46,9 @@ const DataProvider = ({ children }) => {
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
   };
+  const removeItem = () => {
+    dispatch({ type: "REMOVE_ITEM" });
+  };
 
   useEffect(() => {
     getProducts();
@@ -56,6 +59,8 @@ const DataProvider = ({ children }) => {
       value={{
         ...state,
         clearCart,
+        removeItem,
+        // toggleAmount,
       }}
     >
       {children}

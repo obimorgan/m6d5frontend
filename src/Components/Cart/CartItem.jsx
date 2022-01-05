@@ -4,8 +4,8 @@ import { useGlobalContext } from "../DataContext";
 
 
 const CartItem = ({ productId, product, unitQuantity, unitTotalPrice }) => {
-    const { removeItem } = useGlobalContext()
-    const { amount, description, id, image_url, price, product_name } = product
+    const { removeItem, increaseAmount } = useGlobalContext()
+    const { description, id, image_url, price, product_name, amount } = product
     return (
         <>
             <tr>
@@ -16,7 +16,7 @@ const CartItem = ({ productId, product, unitQuantity, unitTotalPrice }) => {
                         <div>{product_name}</div>
                         <div>{description}</div>
                         <button
-                            onClick={() => removeItem(id)}
+                            onClick={() => removeItem(productId)}
                             className="remove_btn" >Remove</button>
                     </div>
                 </td>
@@ -25,17 +25,18 @@ const CartItem = ({ productId, product, unitQuantity, unitTotalPrice }) => {
                 </td>
                 <td className="col-md-2">
                     <div className="d-flex" >
-                        <div className="unit_btn mx-2" ><BsPlusCircleFill /></div>
-                        <div
-                        >{unitQuantity}</div>
+                        <div className="unit_btn mx-2" type="button"
+                            onClick={() => increaseAmount(id)}
+                        ><BsPlusCircleFill /></div>
+                        <div>{amount}</div>
                         <div className="unit_btn mx-2"
-
+                            type="button"
                         ><BsFillDashCircleFill /></div>
                     </div>
                 </td>
-                <td className="col-md-2">
+                {/* <td className="col-md-2">
                     <div>{unitTotalPrice}</div>
-                </td>
+                </td> */}
             </tr>
         </>
     )

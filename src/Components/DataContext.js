@@ -42,25 +42,53 @@ const DataProvider = ({ children }) => {
       console.log(error);
     }
   };
+  //   const increaseAmount = async (productId) => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://hw-m6d5.herokuapp.com/shoppingcart/${productId}/16abcacb-d1ea-40d5-8a63-941a3a4a9fc4`,
+  //         {
+  //           method: "POST",
+  //           body: JSON.stringify(),
+  //           headers: {
+  //             "Content-Type": "application.json",
+  //           },
+  //         }
+  //       );
+  //       if (!response.ok) throw new Error("Feailed at posting");
+  //       const data = await response.json();
+  //       const amount = data.amount;
+  //       dispatch({ type: "DISAPLAY_AMOUNT", payload: amount });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
   };
-  const removeItem = () => {
-    dispatch({ type: "REMOVE_ITEM" });
+  const removeItem = (productId) => {
+    dispatch({ type: "REMOVE_ITEM", payload: productId });
+  };
+  const increaseAmount = (id) => {
+    dispatch({ type: "INCREASE", payload: id });
   };
 
   useEffect(() => {
     getProducts();
     getCartItems();
   }, []);
+
+  useEffect(() => {
+    dispatch({ type: "GET_TOTALS" });
+  }, [state.cartItems]);
+
   return (
     <DataContext.Provider
       value={{
         ...state,
         clearCart,
         removeItem,
-        // toggleAmount,
+        increaseAmount,
       }}
     >
       {children}

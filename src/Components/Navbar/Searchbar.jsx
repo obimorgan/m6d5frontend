@@ -1,18 +1,21 @@
-import { InputGroup, FormControl } from "react-bootstrap"
-import { BsSearch } from "react-icons/bs"
+
+import "./Navbar.css"
+import { useGlobalContext } from "../DataContext"
+import { useState } from "react"
+
 const Searchbar = () => {
+    const { handleSearch, searchInput } = useGlobalContext()
+
+    const [input, setInput] = useState("")
+
     return (
         <>
-            <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1"><BsSearch /></InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                    placeholder="Search products"
-                    aria-label="Search products"
-                    aria-describedby="basic-addon1"
-                />
-            </InputGroup>
+            {/* <form>
+                <input onSubmit={handleSearch}
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)} />
+            </form> */}
         </>
     )
 }

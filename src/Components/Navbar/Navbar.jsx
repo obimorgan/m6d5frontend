@@ -18,9 +18,9 @@ const NavBar = () => {
                     {/* <span>{amount}</span> */}
                     <span>{amount}</span>
                 </Link>
-                <div className="search_bar " >
+                {/* <div className="search_bar " >
                     <Searchbar />
-                </div>
+                </div> */}
             </div>
         </ Container >
     )

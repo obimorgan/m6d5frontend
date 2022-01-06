@@ -5,6 +5,15 @@
   color: #2f3a8f;
 }
 .search_bar {
+  /* position: relative; */
   width: 450px;
-  background-color: #feece9;
+}
+.search_icon {
+  /* position: absolute; */
+  bottom: 10px;
+  left: 15px;
+}
+.btn {
+  width: 25px;
+  height: 10px;
 }

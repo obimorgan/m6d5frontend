@@ -20,8 +20,11 @@ const Reducer = (state, action) => {
   }
   if (action.type === "INCREASE") {
     let tempCart = state.cartItems.map((item) => {
+      const { product } = item;
+      const { amount } = product;
+      console.log(amount);
       if (item.id === action.payload) {
-        return { ...item, amount: item.amount + 1 };
+        return { ...item, amount: item.product.amount + 1 };
       }
       return item;
     });
@@ -31,8 +34,12 @@ const Reducer = (state, action) => {
     let { total, amount } = state.cartItems.reduce(
       (cartTotal, cartItem) => {
         const { product } = cartItem;
+
+        // const { price, amount } = cartItem;
+
         //needed to destructure cartItem because
         // price and amount properties are nested inside product property
+
         const { price, amount } = product;
         console.log("@reducer:", amount, price);
         const itemTotal = price * amount;

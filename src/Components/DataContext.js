@@ -3,7 +3,7 @@
 import React, { useEffect, useReducer, useContext } from "react";
 import Reducer from "./Reducer";
 
-const url = "https://hw-m6d5.herokuapp.com/products";
+const url = `https://hw-m6d5.herokuapp.com/products`;
 const DataContext = React.createContext();
 
 const inititialState = {
@@ -11,6 +11,7 @@ const inititialState = {
   cartItems: [],
   total: 0,
   amount: 0,
+  searchInput: "",
 };
 
 const DataProvider = ({ children }) => {
@@ -19,6 +20,19 @@ const DataProvider = ({ children }) => {
   const getProducts = async () => {
     try {
       const response = await fetch(url);
+      if (response.ok) {
+        const products = await response.json();
+        dispatch({ type: "DISPLAY_PRODUCTS", payload: products });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const searchProducts = async (searchInput) => {
+    try {
+      const response = await fetch(
+        `https://hw-m6d5.herokuapp.com/products?search=${searchInput}`
+      );
       if (response.ok) {
         const products = await response.json();
         dispatch({ type: "DISPLAY_PRODUCTS", payload: products });
@@ -72,13 +86,22 @@ const DataProvider = ({ children }) => {
   const increaseAmount = (id) => {
     dispatch({ type: "INCREASE", payload: id });
   };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   searchProducts()
+  // };
 
   useEffect(() => {
     getProducts();
     getCartItems();
   }, []);
 
+  //   useEffect(() => {
+  //     handleSearch();
+  //   }, [state.search]);
+
   useEffect(() => {
+    //   handleSearch()
     dispatch({ type: "GET_TOTALS" });
   }, [state.cartItems]);
 
@@ -89,6 +112,7 @@ const DataProvider = ({ children }) => {
         clearCart,
         removeItem,
         increaseAmount,
+        // search,
       }}
     >
       {children}

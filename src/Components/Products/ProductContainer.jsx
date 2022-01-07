@@ -21,6 +21,10 @@ const Product = () => {
             <Row>
                 {
                     products && products
+                        .filter(
+                            ((product) => product.product_name.toLowerCase().toUpperCase().indexOf(search)
+                            )
+                        )
                         .map((product) => {
                             return (
                                 <SingleProduct
